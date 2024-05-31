@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 final ReceivePort receivePort = ReceivePort();
                 await Isolate.spawn(isolateComplexTask, receivePort.sendPort);
                 Isolate.run(() => isolateComplexTask);
-                log(await receivePort.first);
+                log((await receivePort.first).toString());
               },
               child: const Text("With Isolate"),
             ),
